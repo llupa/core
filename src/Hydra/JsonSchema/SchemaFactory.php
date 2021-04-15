@@ -35,7 +35,13 @@ final class SchemaFactory implements SchemaFactoryInterface
         '@type' => self::BASE_PROP,
     ];
     private const BASE_ROOT_PROPS = [
-        '@context' => self::BASE_PROP,
+        '@context' => [
+            'readOnly' => true,
+            'oneOf' => [
+                ['type' => 'string'],
+                ['type' => 'object'],
+            ],
+        ]
     ] + self::BASE_PROPS;
 
     private $schemaFactory;
